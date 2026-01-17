@@ -1,12 +1,12 @@
 # leree.nvim
-Small plugin that displays relative line number markers above and below your current line in user customizable intervals. Aimed to make relative number jumps easier.  
+Small plugin that displays relative line number markers closer to the center of the screen and in customizable intervals. Aimed to make relative line number jumps simpler and faster.  
 - [Installation](#installation)
 - [Config](#config)
 - [Highlights](#highlights)
 - [Inspiration](#inspiration)
   
 ## Why use leree.nvim?
-Well I for one don't wanna look all the way to the left to see the line number column. Additionally, if you don't like how it changes when you move between lines, and rather see it in intervals, this plugin is for you!
+Well I for one don't wanna look all the way to the left to see the number column. Additionally, if you don't like how it changes when you move between lines, and rather see it in intervals, this plugin is for you!
 
 <img src="https://github.com/user-attachments/assets/7bfad1e9-3549-4000-ac01-dd36937feaa0" width="600" height="400" />
   
@@ -58,3 +58,4 @@ vim.api.nvim_set_hl(0, "LereeMark", { fg = "#ebaaf2", bg = "NONE", bold = true }
 ```
 ### Inspiration
 Navigation plugins that make jumping around the line or file easier such as [leap.nvim](https://codeberg.org/andyg/leap.nvim) and [quick-scope](https://github.com/unblevable/quick-scope) are the main inspirations for leree.nvim. Especially leap.nvim, I've used it for most of my neovim journey and I will keep using it until I find a faster way to jump around to specific points in a file. I'm not entirely sure if this plugin is faster or better than a leap workflow, but I hope that people who like moving around via numbers + `jk` will find it useful. Lastly, this is my first plugin ever and I want to give back to the community no matter how little :)
+
