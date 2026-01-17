@@ -4,12 +4,12 @@ Small plugin that displays relative line number markers above and below your cur
 - [Config](#config)
 - [Highlights](#highlights)
 - [Inspiration](#inspiration)
+  
+## Why use leree.nvim?
+Well I for one don't wanna look all the way to the left to see the line number column. Additionally, if you don't like how it changes when you move between lines, and rather see it in intervals, this plugin is for you!
 
 <img src="https://github.com/user-attachments/assets/7bfad1e9-3549-4000-ac01-dd36937feaa0" width="600" height="400" />
-
-## Why use leree.nvim?
-Well I for one don't wanna look all the way to the left to see the number to prepend to `j` and `k` to get there. Not only that, I want to only see relative numbers in intervals because I don't need to see all of the numbers. If the line is right below a marker I know the number to type is `marker - 1` or `marker + 1`. I don't even need `relativenumber` set anymore! 
-
+  
 ### Installation
 Install via your plugin manager.
   
