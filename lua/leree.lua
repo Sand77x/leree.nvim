@@ -5,6 +5,9 @@ local defaults = {
 	v_off = 4,
 	h_off = 10,
 	interval = 3,
+	hide_on = { "<Esc>" },
+	show_on = { "V" },
+	toggle_on = {},
 }
 
 M.buf_marks = {}
@@ -21,6 +24,26 @@ M.setup = function(opts)
 	M.config.v_off = math.max(0, M.config.v_off)
 	M.config.h_off = math.max(0, M.config.h_off)
 	M.config.interval = math.max(1, M.config.interval)
+
+	for _, key in ipairs(M.config.show_on) do
+		vim.keymap.set({ "n", "v", "o" }, key, function()
+			M.enable_marks()
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
+		end, { noremap = true, silent = true })
+	end
+
+	for _, key in ipairs(M.config.hide_on) do
+		vim.keymap.set({ "n", "v", "o" }, key, function()
+			M.disable_marks()
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
+		end, { noremap = true, silent = true })
+	end
+
+	for _, key in ipairs(M.config.toggle_on) do
+		vim.keymap.set({ "n", "v" }, key, function()
+			M.toggle_marks()
+		end, { noremap = true, silent = true })
+	end
 end
 
 --- Creates a list of marks based on location of the cursor
@@ -66,10 +89,28 @@ M.toggle_marks = function()
 	local bufnr = api.nvim_get_current_buf()
 	local marks = M.get_buf_marks(bufnr)
 
+	if #marks == 0 then
+		M.create_marks(bufnr, marks)
+	else
+		M.delete_all_marks(bufnr, marks)
+	end
+end
+
+M.enable_marks = function()
+	local bufnr = api.nvim_get_current_buf()
+	local marks = M.get_buf_marks(bufnr)
+
+	if #marks == 0 then
+		M.create_marks(bufnr, marks)
+	end
+end
+
+M.disable_marks = function()
+	local bufnr = api.nvim_get_current_buf()
+	local marks = M.get_buf_marks(bufnr)
+
 	if #marks ~= 0 then
 		M.delete_all_marks(bufnr, marks)
-	else
-		M.create_marks(bufnr, marks)
 	end
 end
 

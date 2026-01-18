@@ -1,5 +1,5 @@
 # leree.nvim
-Small plugin that displays relative line number markers closer to the center of the screen and in customizable intervals. Aimed to make relative line number jumps simpler and faster.  
+Small plugin that displays relative line number markers closer to the center of the screen and in customizable intervals. Aimed to make relative line number jumps simpler and faster.   
 - [Installation](#installation)
 - [Config](#config)
 - [Highlights](#highlights)
@@ -30,27 +30,20 @@ To configure leree.nvim, you can pass a table with these options to the `setup` 
 `v_off` - number of lines between your cursorline and the first marker  
 `h_off` - which column the numbers should be drawn on  
 `interval` - number of rows between each marker  
+`show_on` - show on these keys
+`hide_on` - hide on these keys
+`toggle_on` - toggle on these keys   
+*Note: keys set in `toggle_on` remaps the keys, while those in `show_on` and `hide_on` do not*  
 ```lua
-require('leree').setup({
-  v_off = 4,
-  h_off = 10,
-  interval = 3
+require('leree').setup({ -- defaults
+	v_off = 4,
+	h_off = 10,
+	interval = 3,
+	show_on = { "V" },
+  hide_on = { "<Esc>" },
+  toggle_on = {},
 })
 ```
-
-The markers can be toggled using the `:Leree` user command. I highly recommend setting it to a keymap.  
-
-in your config:
-```lua
-vim.keymap.set({ 'n', 'v' }, '<tab>', '<cmd>Leree<CR>')
-```
-or using lazy.nvim  
-```lua
-keys = {
-  { '<tab>', '<cmd>Leree<CR>', desc = 'Leree: Update marks', mode = { 'n', 'v' } },
-},
-```
-
 ### Highlights  
 The plugin uses the `LereeMark` highlight group to highlight the marks. Add this to your config to change it.
 ```lua
