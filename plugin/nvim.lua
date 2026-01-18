@@ -7,7 +7,7 @@ vim.api.nvim_create_user_command("LereeEnable", function(_)
 end, {
 	range = true,
 	nargs = 0,
-	desc = "Leree: Enables marks",
+	desc = "Leree: Enable marks",
 })
 
 vim.api.nvim_create_user_command("LereeDisable", function(_)
@@ -15,7 +15,15 @@ vim.api.nvim_create_user_command("LereeDisable", function(_)
 end, {
 	range = true,
 	nargs = 0,
-	desc = "Leree: Disables marks",
+	desc = "Leree: Disable marks",
+})
+
+vim.api.nvim_create_user_command("LereeToggle", function(_)
+	l.toggle_marks()
+end, {
+	range = true,
+	nargs = 0,
+	desc = "Leree: Toggle marks",
 })
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
