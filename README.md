@@ -36,14 +36,15 @@ To configure leree.nvim, you can pass a table with these options to the `setup` 
 `hl` - set marker highlight group  
 *Note: keys set in `toggle_on` remaps the keys, while those in `show_on` and `hide_on` do not*  
 ```lua
-require('leree').setup({ -- defaults
+require('leree').setup({
 	v_off = 4,
 	h_off = 10,
 	interval = 3,
-	hide_on = {},
-	show_on = {},
-	toggle_on = {},
 	hl = { fg = "#ebaaf2", bg = nil, bold = true },
+	-- Ex: "v", "y", "c"
+	hide_on = {},
+	show_on = {}, 
+	toggle_on = {},
 })
 ```
 ### Inspiration
