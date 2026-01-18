@@ -1,7 +1,5 @@
 local l = require("leree")
 
-print("leree plugin loaded")
-
 vim.api.nvim_create_user_command("LereeEnable", function(_)
 	l.enable_marks()
 end, {
