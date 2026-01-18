@@ -8,6 +8,7 @@ local defaults = {
 	hide_on = { "<Esc>" },
 	show_on = { "V" },
 	toggle_on = {},
+	hl = { fg = "#ebaaf2", bg = nil, bold = true },
 }
 
 M.buf_marks = {}

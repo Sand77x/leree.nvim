@@ -1,6 +1,6 @@
 local l = require("leree")
 
-vim.api.nvim_set_hl(0, "LereeMark", { fg = "#ebaaf2", bg = "NONE", bold = true })
+print("leree plugin loaded")
 
 vim.api.nvim_create_user_command("LereeEnable", function(_)
 	l.enable_marks()
@@ -30,5 +30,11 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 	pattern = "*",
 	callback = function()
 		l.disable_marks()
+	end,
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "LereeMark", l.config.hl)
 	end,
 })
