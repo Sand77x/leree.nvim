@@ -40,8 +40,8 @@ require('leree').setup({ -- defaults
 	v_off = 4,
 	h_off = 10,
 	interval = 3,
-	show_on = { "V" },
-	hide_on = { "<Esc>" },
+	hide_on = {},
+	show_on = {},
 	toggle_on = {},
 	hl = { fg = "#ebaaf2", bg = nil, bold = true },
 })

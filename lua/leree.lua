@@ -5,8 +5,8 @@ local defaults = {
 	v_off = 4,
 	h_off = 10,
 	interval = 3,
-	hide_on = { "<Esc>" },
-	show_on = { "V" },
+	hide_on = {},
+	show_on = {},
 	toggle_on = {},
 	hl = { fg = "#ebaaf2", bg = nil, bold = true },
 }
@@ -29,15 +29,15 @@ M.setup = function(opts)
 	for _, key in ipairs(M.config.show_on) do
 		vim.keymap.set({ "n", "v", "o" }, key, function()
 			M.enable_marks()
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
-		end, { noremap = true, silent = true })
+			return key
+		end, { expr = true, remap = true, silent = true })
 	end
 
 	for _, key in ipairs(M.config.hide_on) do
 		vim.keymap.set({ "n", "v", "o" }, key, function()
 			M.disable_marks()
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
-		end, { noremap = true, silent = true })
+			return key
+		end, { expr = true, remap = true, silent = true })
 	end
 
 	for _, key in ipairs(M.config.toggle_on) do
